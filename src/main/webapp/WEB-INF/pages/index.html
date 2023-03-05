@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users page</title>
+    <style>
+    </style>
+</head>
+<body>
+<div style="display: flex;flex-direction: row">
+    <table>
+        <thead>
+        <tr>
+            <th>UserFirstName</th>
+            <th>UserLastName</th>
+            <th>UserEMail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <button th:id="${user.id}" onclick="fetch(this.id, {method: 'DELETE',})">Delete
+                </button>
+            </td>
+            <td>
+                <button th:id="${user.id}" onclick={document.getElementById('editBlock').style.display="block"}>Edit</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="display: none" id="editBlock">
+        First name: <input type="text" name="FirstName" value="Mickey" id="FirstName"><br>
+        Last name: <input type="text" name="LastName" value="Mouse" id="LastName"><br>
+        EMail: <input type="text" name="EMail" value="EMail" id="EMail"><br>
+        <input type="submit" value="Submit">
+    </div>
+</div>
+</body>
+</html>
