@@ -1,4 +1,4 @@
-package web.services;
+package web.service;
 
 import web.dao.UserDao;
 import web.models.User;
@@ -42,6 +42,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional
     public User getUser(long id) {
         return userDao.getUser(id);
     }
